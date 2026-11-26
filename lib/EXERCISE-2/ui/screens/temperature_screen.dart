@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
-class TemperatureScreen extends StatelessWidget {
-  TemperatureScreen({super.key});
+class TemperatureScreen extends StatefulWidget {
+  TemperatureScreen({super.key, required this.goToWelcomePage});
+  VoidCallback goToWelcomePage;
+  @override
+  State<StatefulWidget> createState() => _TemperatureScreenState();
+}
 
+class _TemperatureScreenState extends State<TemperatureScreen> {
   final InputDecoration inputDecoration = InputDecoration(
     enabledBorder: OutlineInputBorder(
       borderSide: const BorderSide(color: Colors.white, width: 1.0),
@@ -49,6 +54,17 @@ class TemperatureScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
               ),
               child: const Text('test'),
+            ),
+            const SizedBox(height: 30),
+            OutlinedButton(
+              onPressed: widget.goToWelcomePage,
+              style: OutlinedButton.styleFrom(
+                side: const BorderSide(width: 1.0, color: Colors.white),
+              ),
+              child: const Text(
+                "Back to welcome page",
+                style: TextStyle(color: Colors.white, fontSize: 15),
+              ),
             ),
           ],
         ),

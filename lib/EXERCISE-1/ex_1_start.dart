@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 
 List<String> colors = ["red", "blue", "green"];
 
+List<Widget> getColors() {
+  return colors.map((i) => Text(i)).toList();
+}
+
 void main() {
   runApp(
     MaterialApp(
@@ -13,10 +17,13 @@ void main() {
             children: [
               Label("Method 1: Loop in Array", bold: true),
               // TODO
+              for (int i = 0; i < colors.length; i++) Text(colors[i]),
               Label("Method 2: Map", bold: true),
               // TODO
-              Label("Method 23: Dedicated Function", bold: true),
+              ...colors.map((i) => Text(i)),
+              Label("Method 3: Dedicated Function", bold: true),
               // TODO
+              ...getColors(),
             ],
           ),
         ),

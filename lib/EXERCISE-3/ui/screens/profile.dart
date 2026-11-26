@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../theme/theme.dart';
+import 'package:practice_w8/EXERCISE-3/data/profile_data.dart';
 
 class ProfileApp extends StatelessWidget {
   const ProfileApp({super.key});
@@ -22,38 +23,37 @@ class ProfileApp extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const SizedBox(height: 40),
-            const CircleAvatar(
+            CircleAvatar(
               radius: 60,
               backgroundImage: AssetImage(
-                  'assets/images/w8/aang.png'), 
+                  ronanProfile.avatarUrl), 
             ),
             const SizedBox(height: 20),
             Text(
-              'Ronan OGOR',
+             ronanProfile.name,
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
                 color: AppColors.primary,
               ),
             ),
-            const Text(
-              'Flutter Developer',
+             Text(
+              ronanProfile.position,
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.grey,
               ),
             ),
             const SizedBox(height: 20),
-            const ProfileTile(
-              icon: Icons.phone,
-              title: "Phone Number",
-              data: "+123 456 7890",
+
+
+            for(var i in ronanProfile.tiles)
+              ProfileTile(
+              icon: i.icon,
+              title: i.title,
+              data: i.value,
             ),
-             const ProfileTile(
-              icon: Icons.location_on,
-              title: "Address",
-              data: "Cambodia",
-            ),
+            
           ],
         ),
       ),
